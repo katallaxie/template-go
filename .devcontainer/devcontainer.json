@@ -1,6 +1,7 @@
 {
-    "name": "katallaxie/tempalte-go",
+    "name": "katallaxie/template-go",
     "image": "mcr.microsoft.com/vscode/devcontainers/go:latest",
+    "postCreateCommand": "bash scripts/postCreateCommand.sh",
     "forwardPorts": [8080],
     "appPort": [8080],
     "portsAttributes": {
@@ -10,6 +11,5 @@
     },
      "extensions": [
       "golang.Go"
-    ],
-  }
-  
+    ]
+}
