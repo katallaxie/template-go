@@ -1,0 +1,53 @@
+project_name: template-go
+
+env:
+  - CGO_ENABLED=0
+  - GO111MODULE=on
+
+builds:
+  -
+    id: template-go
+    binary: main
+    main: main.go
+    flags:
+      - -mod=vendor
+    ldflags:
+      - -s -w
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - 386
+      - amd64
+    ignore:
+      - goos: darwin
+        goarch: 386
+
+release:
+  draft: false
+
+snapshot:
+  name_template: "{{.Tag}}"
+
+checksum:
+  name_template: "template_go_checksums.txt"
+
+archives:
+  -
+    id: template-go
+    builds:
+    - template-go
+    name_template: "template_go_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+
+dockers:
+  -
+    dockerfile: Dockerfile
+    goos: linux
+    goarch: amd64
+    binaries:
+      - main
+    image_templates:
+     - "katallaxie/{{.ProjectName}}:latest"
+     - "katallaxie/{{.ProjectName}}:{{ .Tag }}"
+     - "katallaxie/{{.ProjectName}}"
