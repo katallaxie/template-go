@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: [ '1.18', '1.17' ]
+        go: [ 1.18, 1.17 ]
     steps:
     - 
       name: Check out code into the Go module directory
@@ -26,7 +26,7 @@ jobs:
         go-version: ${{ matrix.go }}
     - 
       name: Check code
-      uses: golangci/golangci-lint-action@v3.2.0
+      uses: golangci/golangci-lint-action@v3
       with:
         version: latest
         # skip cache because of flaky behaviors
