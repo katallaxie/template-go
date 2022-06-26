@@ -1,0 +1,7 @@
+version: 1
+template:
+  placeholders:
+    -
+      type: string
+      name: name
+      prompt: The name of the new project
