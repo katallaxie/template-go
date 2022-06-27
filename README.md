@@ -1,4 +1,4 @@
-# :partying_face: Template for Go
+# :partying_face: {{ project_name }}
 
 ## Get Started
 
