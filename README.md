@@ -1,4 +1,4 @@
-# :partying_face: {{ project_name }}
+# :partying_face: {{ .project_name }}
 
 ## Get Started
 
