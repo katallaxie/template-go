@@ -1,4 +1,7 @@
 version: 1
+ignores:
+  - .github
+  - .goreleaser.yml
 inputs:
   -
     type: string
