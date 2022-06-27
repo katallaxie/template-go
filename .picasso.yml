@@ -3,5 +3,5 @@ template:
   placeholders:
     -
       type: string
-      name: name
+      name: project_name
       prompt: The name of the new project
