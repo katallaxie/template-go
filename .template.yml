@@ -1,0 +1,6 @@
+version: 1
+inputs:
+  -
+    type: string
+    name: ProjectName
+    prompt: The name of the new project
