@@ -1,5 +1,7 @@
 version: 1
 template:
+  excludes:
+    - .goreleaser.yml
   inputs:
     -
       type: string
