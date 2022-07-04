@@ -1,0 +1,7 @@
+version: 1
+template:
+  inputs:
+    -
+      type: string
+      name: ProjectName
+      prompt: The name of the new project
