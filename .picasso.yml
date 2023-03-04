@@ -1,9 +1,0 @@
-version: 1
-template:
-  excludes:
-    - .goreleaser.yml
-  inputs:
-    -
-      type: string
-      name: ProjectName
-      prompt: The name of the new project

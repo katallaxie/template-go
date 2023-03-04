@@ -6,23 +6,53 @@ env:
 
 builds:
   -
-    id: template-go
+    id: main
     binary: main
-    main: main.go
-    flags:
-      - -mod=vendor
+    main: main-{{.Os}}-{{.Arch}}
     ldflags:
       - -s -w
     goos:
-      - windows
       - darwin
       - linux
     goarch:
-      - 386
       - amd64
+      - arm
+      - arm64
     ignore:
       - goos: darwin
         goarch: 386
+    no_unique_dist_dir: true
+
+archives:
+  -
+    id: main
+    builds:
+      - main
+    name_template: "template_go_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+
+dockers:
+  -
+    dockerfile: Dockerfile
+    goos: linux
+    goarch: amd64
+    ids:
+      - main
+    image_templates:
+      - "ghcr.io/ionos-cloud/{{.ProjectName}}:latest"
+      - "ghcr.io/ionos-cloud/{{.ProjectName}}:{{.Tag}}"
+      - "ghcr.io/ionos-cloud/{{.ProjectName}}"
+    build_flag_templates:
+      - "--pull"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+      - "--build-arg=BINARY=main-linux-amd64"
+      - "--platform=linux/amd64"
+
+
+gomod:
+  proxy: false
 
 release:
   draft: false
@@ -31,23 +61,4 @@ snapshot:
   name_template: "{{.Tag}}"
 
 checksum:
-  name_template: "template_go_checksums.txt"
-
-archives:
-  -
-    id: template-go
-    builds:
-    - template-go
-    name_template: "template_go_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
-
-dockers:
-  -
-    dockerfile: Dockerfile
-    goos: linux
-    goarch: amd64
-    binaries:
-      - main
-    image_templates:
-     - "katallaxie/{{.ProjectName}}:latest"
-     - "katallaxie/{{.ProjectName}}:{{ .Tag }}"
-     - "katallaxie/{{.ProjectName}}"
+  name_template: "{{.ProjectName}}_checksums.txt"
