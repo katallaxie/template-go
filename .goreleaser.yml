@@ -1,26 +1,26 @@
 project_name: template-go
 
-env:
-  - CGO_ENABLED=0
-  - GO111MODULE=on
-
 builds:
-  -
+   -
     id: main
-    binary: main
-    main: main-{{.Os}}-{{.Arch}}
-    ldflags:
-      - -s -w
+    binary: main-{{.Os}}-{{ .Arch }}
+    main: main.go
     goos:
+      - windows
       - darwin
       - linux
     goarch:
+      - 386
       - amd64
       - arm
       - arm64
     ignore:
-      - goos: darwin
-        goarch: 386
+        - goos: darwin
+          goarch: 386
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+        - -s -w
     no_unique_dist_dir: true
 
 archives:
@@ -28,7 +28,7 @@ archives:
     id: main
     builds:
       - main
-    name_template: "template_go_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    name_template: "main_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
 
 dockers:
   -
@@ -38,27 +38,18 @@ dockers:
     ids:
       - main
     image_templates:
-      - "ghcr.io/ionos-cloud/{{.ProjectName}}:latest"
-      - "ghcr.io/ionos-cloud/{{.ProjectName}}:{{.Tag}}"
-      - "ghcr.io/ionos-cloud/{{.ProjectName}}"
-    build_flag_templates:
-      - "--pull"
-      - "--label=org.opencontainers.image.created={{.Date}}"
-      - "--label=org.opencontainers.image.title={{.ProjectName}}"
-      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-      - "--label=org.opencontainers.image.version={{.Version}}"
-      - "--build-arg=BINARY=main-linux-amd64"
-      - "--platform=linux/amd64"
-
+      - "ghcr.io/katallaxie/{{.ProjectName}}:latest"
+      - "ghcr.io/katallaxie/{{.ProjectName}}:{{ .Tag }}"
+      - "ghcr.io/katallaxie/{{.ProjectName}}"
 
 gomod:
-  proxy: false
+  proxy: true
 
 release:
-  draft: false
+  draft: true
 
 snapshot:
   name_template: "{{.Tag}}"
 
 checksum:
-  name_template: "{{.ProjectName}}_checksums.txt"
+  name_template: "main_checksums.txt"

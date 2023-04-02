@@ -1,9 +1,11 @@
 # :partying_face: Template Go
 
+> This is the standard template for Go projects of @katallaxie.
+
 ## Get Started
 
 ```bash
-go mod init <YOUR_REPO> && go mod tidy
+make setup MODULE_NAME=github.com/username/repo
 ```
 
 Features
@@ -11,8 +13,6 @@ Features
 * [Developer Containers](https://code.visualstudio.com/docs/remote/containers)
 * [Editorconfig](https://editorconfig.org)
 * [GoReleaser](https://goreleaser.com)
-* [Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks#_git_hooks)
-* [minikube](https://minikube.sigs.k8s.io/docs/start/)
 
 > You can `sh scripts/postCreateCommand.sh` if you are not running in a remote container or on [Codespaces](https://github.com/features/codespaces).
 

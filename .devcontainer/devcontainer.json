@@ -1,5 +1,5 @@
 {
-  "name": "ionos-cloud/streams",
+  "name": "katallaxie/template-go",
   "build": {
       "dockerfile": "Dockerfile",
       // Update 'VARIANT' to pick an Ubuntu version: jammy / ubuntu-22.04, focal / ubuntu-20.04, bionic /ubuntu-18.04
@@ -12,8 +12,16 @@
   "postCreateCommand": "bash scripts/postCreateCommand.sh",
   "features": {
       "docker-in-docker": "latest",
-      "kubectl-helm-minikube": "latest",
       "golang": "latest"
   },
-  "remoteUser": "vscode"
+  "customizations": {
+    "vscode": {
+        "extensions": [
+            "GitHub.copilot",
+            "golang.go",
+            "ms-vscode.cpptools",
+            "ms-vscode.makefile-tools"
+        ]
+    }
+  }
 }
