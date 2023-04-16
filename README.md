@@ -31,7 +31,6 @@ Setup the project.
 ```bash
 make setup MODULE_NAME=github.com/username/repo
 ```
-```
 
 Other available targets are
 
