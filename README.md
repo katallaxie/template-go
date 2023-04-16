@@ -13,16 +13,24 @@ Features
 * [Developer Containers](https://code.visualstudio.com/docs/remote/containers)
 * [Editorconfig](https://editorconfig.org)
 * [GoReleaser](https://goreleaser.com)
+* [Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
 
 > You can `sh scripts/postCreateCommand.sh` if you are not running in a remote container or on [Codespaces](https://github.com/features/codespaces).
 
 ## Development
 
-This template supports `Makefile` and `run` build tooling.
+This template supports `Makefile` to run tooling.
 
 ```bash
-# build `main.go`
-make 
+# show `help`
+make help
+```
+
+Setup the project.
+
+```bash
+make setup MODULE_NAME=github.com/username/repo
+```
 ```
 
 Other available targets are
