@@ -11,14 +11,8 @@
   "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
   "postCreateCommand": "bash scripts/postCreateCommand.sh",
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:1": {
-      "version": "latest",
-      "moby": true
-    },
-    "ghcr.io/devcontainers/features/golang:1": {
-      "version": "latest",
-      "go": true
-    }
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "golang": "latest"
   },
   "customizations": {
     "vscode": {
