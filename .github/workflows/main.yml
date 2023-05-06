@@ -11,9 +11,13 @@ on:
     branches:
     - main
 
+
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-go@v4
