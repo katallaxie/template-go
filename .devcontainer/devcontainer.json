@@ -18,9 +18,10 @@
     "vscode": {
         "extensions": [
             "GitHub.copilot",
+            "GitHub.vscode-github-actions",
             "golang.go",
             "ms-vscode.cpptools",
-            "ms-vscode.makefile-tools"
+            "ms-vscode.makefile-tools" 
         ]
     }
   }
