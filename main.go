@@ -14,7 +14,6 @@ import (
 	"github.com/katallaxie/pkg/server"
 
 	"github.com/spf13/cobra"
-	"go.uber.org/zap"
 )
 
 var rootCmd = &cobra.Command{
@@ -37,7 +36,7 @@ func run(ctx context.Context) error {
 	log.SetFlags(0)
 	log.SetOutput(os.Stderr)
 
-	zap.RedirectStdLog(logger.LogSink)
+	logger.RedirectStdLog(logger.LogSink)
 
 	srv, _ := server.WithContext(ctx)
 
