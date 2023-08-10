@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/golang/mock v1.7.0-rc.1
 	github.com/golangci/golangci-lint v1.54.0
-	github.com/katallaxie/pkg v0.5.7
+	github.com/katallaxie/pkg v0.5.8
 	github.com/spf13/cobra v1.7.0
 	mvdan.cc/gofumpt v0.5.0
 )
