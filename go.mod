@@ -1,6 +1,6 @@
 module github.com/katallaxie/template-go
 
-go 1.20
+go 1.21
 
 require (
 	github.com/golang/mock v1.7.0-rc.1
