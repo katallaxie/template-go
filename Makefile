@@ -11,7 +11,7 @@ MODULE_NAME ?= github.com/katallaxie/template-go
 
 .PHONY: build
 build: ## Build the binary file.
-	$(GO_RELEASER) build --snapshot --rm-dist
+	$(GO_RELEASER) build --snapshot --clean
 
 .PHONY: generate
 generate: ## Generate code.
