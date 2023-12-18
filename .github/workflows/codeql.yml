@@ -29,11 +29,11 @@ jobs:
     - uses: actions/setup-go@v5
       with:
         go-version-file: go.mod
-    - uses: github/codeql-action/init@v2
+    - uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
     - run: |
         make build
-    - uses: github/codeql-action/analyze@v2
+    - uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
