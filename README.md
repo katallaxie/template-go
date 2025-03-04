@@ -3,6 +3,7 @@
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/katallaxie/template-go?quickstart=1)
 
 > This is a GitHub Template Repository. You can use the green button to create a new repository based on this template. Read more about [GitHub Template Repositories](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
+> Have a look at the [Standard Go Project Layout](https://github.com/golang-standards/project-layout) for setup conventions.
 
 ## Get Started
 
