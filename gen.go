@@ -1,6 +1,3 @@
-//go:build generate
-// +build generate
+package example
 
-package main
-
-//go:generate echo "Generating..."
+//go:generate echo "Generating ..."

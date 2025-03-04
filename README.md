@@ -1,26 +1,10 @@
 # :partying_face: Template Go
 
-> This is the standard template for Go projects of @katallaxie.
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/katallaxie/template-go?quickstart=1)
 
 > This is a GitHub Template Repository. You can use the green button to create a new repository based on this template. Read more about [GitHub Template Repositories](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
 
 ## Get Started
-
-```bash
-make setup MODULE_NAME=github.com/username/repo
-```
-
-Features
-
-* [Development Containers](https://containers.dev/)
-* [Editorconfig](https://editorconfig.org)
-* [GoReleaser](https://goreleaser.com)
-* [Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
-* [GitHub Actions](https://github.com/features/actions) (lint, test, build, release)
-
-> You can `sh scripts/postCreateCommand.sh` if you are not running in a remote container or on [Codespaces](https://github.com/features/codespaces).
-
-## Usage
 
 This template supports `Makefile` to run tooling.
 
@@ -31,22 +15,20 @@ This template supports `Makefile` to run tooling.
 make help
 ```
 
-## Setup
-
-Setup the project.
-
-```bash
-make setup MODULE_NAME=github.com/username/repo
-```
-
 Other available targets are
 
-* `build`
-* `fmt`
-* `lint`
-* `vet`
-* `generate`
-* `clean`
+```bash
+build                          Build the binary file.
+clean                          Remove previous build.
+fmt                            Run go fmt against code.
+generate                       Generate code.
+help                           Display this help screen.
+lint                           Run lint.
+mocks                          Generate mocks.
+release                        Release the project.
+test                           Run tests.
+vet                            Run go vet against code.
+```
 
 The convention is to use `make` to run the build.
 
