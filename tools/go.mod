@@ -6,7 +6,7 @@ toolchain go1.24.0
 
 require (
 	github.com/golangci/golangci-lint v1.64.7
-	github.com/goreleaser/goreleaser/v2 v2.8.0
+	github.com/goreleaser/goreleaser/v2 v2.8.1
 	github.com/katallaxie/pkg v0.7.0
 	github.com/vektra/mockery/v2 v2.53.2
 	gotest.tools/gotestsum v1.12.1
