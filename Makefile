@@ -1,11 +1,10 @@
 .DEFAULT_GOAL := build
 
 # Go variables
-GO 							?= go
-GO_RUN_TOOLS 		?= $(GO) run -modfile ./tools/go.mod
-GO_TEST 				?= $(GO_RUN_TOOLS) gotest.tools/gotestsum --format pkgname
-GO_RELEASER 		?= $(GO_RUN_TOOLS) github.com/goreleaser/goreleaser
-GO_MOD					?= $(shell ${GO} list -m)
+GO 					?= go
+GO_TOOL 			?= $(GO) tool
+GO_TEST 			?= $(GO_TOOL) gotest.tools/gotestsum --format pkgname
+GO_RELEASER 		?= $(GO_TOOL) github.com/goreleaser/goreleaser/v2
 
 .PHONY: release
 release: ## Release the project.
@@ -21,11 +20,11 @@ generate: ## Generate code.
 
 .PHONY: mocks
 mocks: ## Generate mocks.
-	$(GO_RUN_TOOLS) github.com/vektra/mockery/v2
+	$(GO_TOOL) mockery
 
 .PHONY: fmt
 fmt: ## Run go fmt against code.
-	$(GO_RUN_TOOLS) mvdan.cc/gofumpt -w .
+	$(GO_TOOL) mvdan.cc/gofumpt -w .
 
 .PHONY: vet
 vet: ## Run go vet against code.
@@ -38,7 +37,7 @@ test: fmt vet ## Run tests.
 
 .PHONY: lint
 lint: ## Run lint.
-	$(GO_RUN_TOOLS) github.com/golangci/golangci-lint/cmd/golangci-lint run --timeout 5m -c .golangci.yml
+	$(GO_TOOL) golangci-lint run --timeout 5m -c .golangci.yml
 
 .PHONY: clean
 clean: ## Remove previous build.
