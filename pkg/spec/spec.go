@@ -11,6 +11,14 @@ var validate = validator.New()
 
 var _ io.Reader = (*Spec)(nil)
 
+// Template is the template for the project.
+type Template struct {
+	// URL is the URL of the template.
+	URL string `json:"url" yaml:"url"`
+	// Subdir is the subdirectory of the template.
+	Subdir string `json:"subdir" yaml:"subdir"`
+}
+
 // Spec is the specification for the project.
 type Spec struct {
 	// Name is the name of the project.
@@ -23,6 +31,8 @@ type Spec struct {
 	Author string `json:"author" yaml:"author"`
 	// License is the license of the project.
 	License string `json:"license" yaml:"license"`
+	// Templates is the list of templates for the project.
+	Templates []Template `json:"templates" yaml:"templates"`
 }
 
 // Example returns an example specification.
@@ -31,6 +41,11 @@ func Example() *Spec {
 		Name:        "example",
 		Version:     DefaultVersion,
 		Description: "This is an example project.",
+		Templates: []Template{
+			{
+				URL: "https://github.com/katallaxie/template-go/archive/refs/tags/v0.5.0.tar.gz",
+			},
+		},
 	}
 }
 
@@ -44,11 +59,12 @@ const (
 // UnmarshalYAML unmarshals the YAML data into the Spec struct.
 func (s *Spec) UnmarshalYAML(data []byte) error {
 	ss := &struct {
-		Author      string `yaml:"author"`
-		Description string `yaml:"description"`
-		License     string `yaml:"license"`
-		Name        string `yaml:"name"`
-		Version     int    `yaml:"version"`
+		Author      string     `yaml:"author"`
+		Description string     `yaml:"description"`
+		License     string     `yaml:"license"`
+		Name        string     `yaml:"name"`
+		Version     int        `yaml:"version"`
+		Templates   []Template `yaml:"templates"`
 	}{}
 
 	if err := yaml.Unmarshal(data, &ss); err != nil {
@@ -60,6 +76,7 @@ func (s *Spec) UnmarshalYAML(data []byte) error {
 	s.Description = ss.Description
 	s.Author = ss.Author
 	s.License = ss.License
+	s.Templates = ss.Templates
 
 	return nil
 }

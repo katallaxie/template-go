@@ -1,7 +1,0 @@
-version: 1
-name: template-go
-description: This is a template for a Go project.
-hooks:
-  pre-commit:
-    - make test
-    - make lint
