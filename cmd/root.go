@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 
 	"github.com/katallaxie/go-template/internal/cfg"
+	"github.com/katallaxie/go-template/pkg/loader"
 	"github.com/katallaxie/go-template/pkg/spec"
 
 	"github.com/spf13/cobra"
@@ -55,6 +56,13 @@ func runRoot(_ context.Context) error {
 	var spec spec.Spec
 	if err := spec.UnmarshalYAML(s); err != nil {
 		return err
+	}
+
+	loader := loader.NewUrlLoader()
+	for _, tpl := range spec.Templates {
+		if err := loader.Load(tpl, "tmp"); err != nil {
+			return err
+		}
 	}
 
 	return nil
