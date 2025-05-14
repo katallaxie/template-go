@@ -10,6 +10,7 @@ import (
 	"github.com/katallaxie/go-template/pkg/loader"
 	"github.com/katallaxie/go-template/pkg/spec"
 
+	"github.com/katallaxie/pkg/utilx"
 	"github.com/spf13/cobra"
 )
 
@@ -31,6 +32,7 @@ func init() {
 	RootCmd.PersistentFlags().BoolVarP(&config.Verbose, "verbose", "v", config.Verbose, "verbose output")
 	RootCmd.PersistentFlags().BoolVarP(&config.Force, "force", "f", config.Force, "force overwrite")
 	RootCmd.PersistentFlags().StringVarP(&config.File, "config", "c", config.File, "config file")
+	RootCmd.PersistentFlags().StringVarP(&config.Root, "root", "r", config.Root, "root directory")
 
 	RootCmd.SilenceErrors = true
 	RootCmd.SilenceUsage = true
@@ -45,8 +47,13 @@ var RootCmd = &cobra.Command{
 	Version: fmt.Sprintf(versionFmt, version, commit, date),
 }
 
-func runRoot(_ context.Context) error {
+func runRoot(ctx context.Context) error {
 	cfg := filepath.Clean(config.File)
+
+	cwd, err := config.Cwd()
+	if err != nil {
+		return err
+	}
 
 	s, err := os.ReadFile(cfg)
 	if err != nil {
@@ -58,9 +65,14 @@ func runRoot(_ context.Context) error {
 		return err
 	}
 
-	loader := loader.NewUrlLoader()
+	path := cwd
+	if utilx.NotEmpty(config.Root) {
+		path = config.Root
+	}
+
+	loader := loader.NewURLLoader()
 	for _, tpl := range spec.Templates {
-		if err := loader.Load(tpl, "tmp"); err != nil {
+		if err := loader.Load(ctx, tpl, path); err != nil {
 			return err
 		}
 	}

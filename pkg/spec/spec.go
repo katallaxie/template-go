@@ -15,8 +15,8 @@ var _ io.Reader = (*Spec)(nil)
 type Template struct {
 	// URL is the URL of the template.
 	URL string `json:"url" yaml:"url"`
-	// Subdir is the subdirectory of the template.
-	Subdir string `json:"subdir" yaml:"subdir"`
+	// Prefix is the prefix of the template.
+	Prefix string `json:"prefix" yaml:"prefix"`
 }
 
 // Spec is the specification for the project.
@@ -43,7 +43,8 @@ func Example() *Spec {
 		Description: "This is an example project.",
 		Templates: []Template{
 			{
-				URL: "https://github.com/katallaxie/template-go/archive/refs/tags/v0.5.0.tar.gz",
+				URL:    "https://github.com/katallaxie/template-go/archive/refs/tags/v0.5.0.tar.gz",
+				Prefix: "template-go-main",
 			},
 		},
 	}

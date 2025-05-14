@@ -15,13 +15,7 @@ type Config struct {
 	// File is the file to write to.
 	File string
 	// Root is the root configuration.
-	Root Root
-}
-
-// Root is the root configuration.
-type Root struct {
-	// Hook is the name of the hook to run.
-	Run string
+	Root string
 }
 
 // Cwd is the current working directory.

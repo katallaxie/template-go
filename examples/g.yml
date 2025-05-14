@@ -5,4 +5,4 @@ author: ""
 license: ""
 templates:
     - url: https://github.com/katallaxie/template-go/archive/refs/heads/main.zip
-      subdir: ""
+      prefix: "template-go-main"
