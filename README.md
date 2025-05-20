@@ -1,6 +1,5 @@
 # :partying_face: Template Go
 
-[![Keep a Changelog](https://img.shields.io/badge/changelog-Keep%20a%20Changelog-%23E05735)](CHANGELOG.md)
 [![Go Reference](https://pkg.go.dev/badge/github.com/katallaxie/template-go.svg)](https://pkg.go.dev/github.com/katallaxie/template-go)
 [![go.mod](https://img.shields.io/github/go-mod/go-version/katallaxie/template-go)](go.mod)
 [![LICENSE](https://img.shields.io/github/license/katallaxie/template-go)](LICENSE)

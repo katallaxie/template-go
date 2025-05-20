@@ -1,4 +1,4 @@
-module example
+module github.com/katallaxie/template-go
 
 go 1.24
 
