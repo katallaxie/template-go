@@ -45,9 +45,6 @@ linters:
     - wastedassign
     - whitespace
 
-  disable:
-    - govet
-
   settings:
     exhaustive:
       default-signifies-exhaustive: true

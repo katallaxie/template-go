@@ -1,63 +1,14 @@
 version: 2
-project_name: template-go
-
 before:
   hooks:
     - go mod tidy
-
 builds:
-  - goos:
-      - darwin
-      - linux
-      - windows
-    goarch:
-      - 386
-      - amd64
-      - arm
-      - arm64
-    goarm:
-      - 7
-    ignore:
-      - goos: darwin
-        goarch: 386
-      - goos: windows
-        goarch: arm
-    env:
-      - CGO_ENABLED=0
-    ldflags:
-      - -s -w -X github.com/katallaxie/template-go/cmd.version={{.Version}} -X github.com/katallaxie/template-go/cmd.commit={{.Commit}} -X github.com/katallaxie/template-go/cmd.date={{.Date}} -X github.com/katallaxie/template-go/cmd.builtBy=goreleaser
-
-archives:
-  - builds:
-      - g
-    name_template: "template_go_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
-
-brews:
-  - repository:
-      owner: katallaxie
-      name: homebrew-template-go-tap
-      token: "{{ .Env.TAP_GITHUB_TOKEN }}"
-    goarm: "7"
-    homepage: https://katallaxie.github.io/template-go/
-    directory: Formula
-    dependencies:
-      - name: go
-        type: optional
-    license: APACHE-2.0
-    install: |-
-      bin.install "g"
-
+  - skip: true
 release:
-  name_template: "v{{ .Version }}"
   header: |
-    ## {{.Version}} Release ({{ .Date }})
+    ## Changelog ({{ .Date }})
 
-    Welcome to this new release :rocket:!
-  footer: |
-    ## Thanks!
-
-    Those were the changes on {{ .Tag }}!
-
+    Welcome to this new release! We hope you enjoy the changes we've made.
 changelog:
   groups:
     - title: Features
@@ -74,12 +25,3 @@ changelog:
       - "^docs:"
       - typo
       - (?i)foo
-
-gomod:
-  proxy: true
-
-snapshot:
-  name_template: "{{.Tag}}"
-
-checksum:
-  name_template: "template_go_checksums.txt"
